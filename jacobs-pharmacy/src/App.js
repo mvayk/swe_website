@@ -99,12 +99,12 @@ const Navigation = ({ currentPage, setCurrentPage }) => {
   );
 };
 
-const HomePage = () => {
+const HomePage = ({ setCurrentPage }) => {
   return (
     <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
       <div className="text-center mb-16">
         <h1 className="text-6xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-purple-600 animate-pulse">
-         Welcome to Jacob's Pharmacy, where medication meets recreation.
+          Welcome to Jacob's Pharmacy, where medication meets recreation.
         </h1>
         <p className="text-xl text-gray-400 max-w-2xl mx-auto">
           OUR trusted source of medications in the digital meadows
@@ -130,7 +130,10 @@ const HomePage = () => {
 
       <div className="text-center">
         <div className="inline-block bg-gradient-to-r from-purple-600 to-pink-600 p-1 rounded-lg">
-          <button className="bg-black px-8 py-3 rounded-md text-white font-semibold hover:bg-gray-900 transition-all">
+          <button
+            onClick={() => setCurrentPage('products')}
+            className="bg-black px-8 py-3 rounded-md text-white font-semibold hover:bg-gray-900 transition-all"
+          >
             Explore Products
           </button>
         </div>
@@ -239,6 +242,7 @@ const AboutPage = () => {
         <h3 className="text-2xl font-bold text-white mb-4">Visit Our Location</h3>
         <div className="aspect-video bg-gray-900 rounded-lg overflow-hidden">
           <iframe
+            title="Jacob's Pharmacy Location"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.7547193273694!2d151.20846!3d-33.870453!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ae401e8b983f%3A0x5017d681632bfc0!2sSydney%20Opera%20House!5e0!3m2!1sen!2sau!4v1234567890"
             width="100%"
             height="100%"
@@ -261,14 +265,14 @@ export default function App() {
 
       <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
-      {currentPage === 'home' && <HomePage />}
+      {currentPage === 'home' && <HomePage setCurrentPage={setCurrentPage} />}
       {currentPage === 'products' && <ProductsPage />}
       {currentPage === 'about' && <AboutPage />}
 
       <footer className="relative z-10 bg-black/40 backdrop-blur-md border-t border-purple-500/30 mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-gray-500">
           <p>© 2024 Jacob's Pharmacy. All rights reserved.</p>
-          <p className="text-sm mt-2">For educational and entertainment purposes only.</p>
+          <p className="text-sm mt-2">For recreational purposes only.</p>
         </div>
       </footer>
     </div>
